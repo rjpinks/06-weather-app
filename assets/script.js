@@ -15,10 +15,10 @@ function secondFetch () {
             for (let index = 0; index < 6; index++) {
                 var mainTemp = data.list[index].main.temp;
                 console.log("mainTemp", mainTemp);
-                var weatherMain = data.list[index].weather[0].main;
-                console.log("weatherMain", weatherMain);
-                var weatherDesc = data.list[index].weather[0].description;
-                console.log("weatherDesc", weatherDesc);
+                var windSpeed = data.list[index].wind.speed;
+                console.log("windSpeed", windSpeed);
+                var weatherHumidity = data.list[index].main.humidity;
+                console.log("weatherHumidity", weatherHumidity);
                 
                 var newListItem = document.createElement("h3");
                 var listContent = document.createTextNode("Day " + index);
@@ -31,12 +31,12 @@ function secondFetch () {
                 document.body.appendChild(newListItem);
                 
                 newListItem = document.createElement("li");
-                listContent = document.createTextNode("Main Type: " + weatherMain);
+                listContent = document.createTextNode("Wind Speed: " + windSpeed);
                 newListItem.appendChild(listContent);
                 document.body.appendChild(newListItem);
 
                 var newListItem = document.createElement("li");
-                var listContent = document.createTextNode("Weather Description: " + weatherDesc);
+                var listContent = document.createTextNode("Humidity: " + weatherHumidity + "%");
                 newListItem.appendChild(listContent);
                 document.body.appendChild(newListItem);
             }

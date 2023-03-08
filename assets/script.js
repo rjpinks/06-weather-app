@@ -64,19 +64,15 @@ searchBox.addEventListener("submit", function(event) {
                 return weatherCallUrl;
             };
         })
+
+    secondFetch();
 })
 
-/*
-PSEUDOCODE
+// var clearButton = document.querySelector("#clear-button");
 
-PHASE 1:
-When I enter a city into the value field of the form and submit,
-    1st i must do a API call to get the coordinates of the city
-    2nd once i have them i must do a new API call to get the weather
-    i ONLY need to display the weather
-
-PHASE2:
-The data the I fetched will be posted into 2 different sections. Current day/info & the 5-day forecast
-    to do this I will need to do a for loop. if index === 0 post in current. else post in 5 day. (actually need will need to look at the data i get from API for better judgement)
-    I will need to do the 3 steps of adding to the DOM
-    This should be plenty to work on for now. */
+// clearButton.addEventListener("click", function () {
+//     var h3Els = document.getElementsByTagName("h3");
+//     var liEls = document.getElementsByTagName("li");
+//     h3Els.remove()
+//     liEls.remove()
+// })

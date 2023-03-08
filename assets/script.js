@@ -1,5 +1,9 @@
+//secondFetch() works. can access the data using that for loop. need to make it append to website
 var searchBox = document.querySelector("#search-box");
 var weatherCallUrl = "";
+var fiveDay = document.querySelector("#five-day");
+var fiveDayList = document.querySelector("#five-day-list");
+var pastSearches = document.querySelector("#past-searches-section");
 
 function secondFetch () {
     fetch(weatherCallUrl)
@@ -8,11 +12,33 @@ function secondFetch () {
         })
         .then(function (data) {
             //this loop will need to give me the 5 day forecast n whatnot.
-            console.log("lol wut");
-            for (let index = 0; index < data.list.length; index++) {
-                console.log(data.list[index].main.temp);
-                console.log(data.list[index].weather[0].main);
-                console.log(data.list[index].weather[0].description);
+            for (let index = 0; index < 6; index++) {
+                var mainTemp = data.list[index].main.temp;
+                console.log("mainTemp", mainTemp);
+                var weatherMain = data.list[index].weather[0].main;
+                console.log("weatherMain", weatherMain);
+                var weatherDesc = data.list[index].weather[0].description;
+                console.log("weatherDesc", weatherDesc);
+                
+                var newListItem = document.createElement("h3");
+                var listContent = document.createTextNode("Day " + index);
+                newListItem.appendChild(listContent);
+                document.body.appendChild(newListItem);
+                
+                newListItem = document.createElement("li");
+                listContent = document.createTextNode("Temperature: " + mainTemp);
+                newListItem.appendChild(listContent);
+                document.body.appendChild(newListItem);
+                
+                newListItem = document.createElement("li");
+                listContent = document.createTextNode("Main Type: " + weatherMain);
+                newListItem.appendChild(listContent);
+                document.body.appendChild(newListItem);
+
+                var newListItem = document.createElement("li");
+                var listContent = document.createTextNode("Weather Description: " + weatherDesc);
+                newListItem.appendChild(listContent);
+                document.body.appendChild(newListItem);
             }
         })
 }

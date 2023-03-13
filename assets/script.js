@@ -61,7 +61,6 @@ searchBox.addEventListener("submit", function(event) {
                 var dataList = [cityData.lat, cityData.lon];
                 weatherCallUrl = "http://api.openweathermap.org/data/2.5/forecast?lat=" + dataList[0] + "&lon=" + dataList[1] + "&units=imperial" + "&appid=e03ff718bfde42745e7d19afe3ccf6bc";
                 //console.log("in function" ,weatherCallUrl);
-                return weatherCallUrl;
             };
         })
 

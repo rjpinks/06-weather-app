@@ -124,10 +124,10 @@ searchBox.addEventListener("submit", function(event) {
                 var dataList = [cityData.lat, cityData.lon];
                 weatherCallUrl = "http://api.openweathermap.org/data/2.5/forecast?lat=" + dataList[0] + "&lon=" + dataList[1] + "&units=imperial" + "&appid=e03ff718bfde42745e7d19afe3ccf6bc";
                 console.log("in function, weatherCallUrl: " ,weatherCallUrl);
-            };
+            }
+            secondFetch();
         })
 
-    secondFetch();
 })
 
 if (localStorage.temp) {
@@ -144,12 +144,3 @@ if (localStorage.icon) {
     var pastIcon = document.querySelector('#past-icon')
     pastIcon.innerHTML = localStorage.icon
 }
-
-// var clearButton = document.querySelector("#clear-button");
-
-// clearButton.addEventListener("click", function () {
-//     var h3Els = document.getElementsByTagName("h3");
-//     var liEls = document.getElementsByTagName("li");
-//     h3Els.remove()
-//     liEls.remove()
-// })

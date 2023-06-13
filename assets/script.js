@@ -32,18 +32,22 @@ function secondFetch () {
                     
                     if (data.list[index].weather[0].main === 'Rain') {
                         iconEl.innerHTML = weatherIcons[0]
+                        localStorage.setItem('icon', weatherIcons[0])
                     } else if (data.list[index].weather[0].main === 'Clouds') {
                         iconEl.innerHTML = weatherIcons[3]
+                        localStorage.setItem('icon', weatherIcons[3])
                     } else if (data.list[index].weather[0].main === 'Clear') {
                         iconEl.innerHTML = weatherIcons[1]
+                        localStorage.setItem('icon', weatherIcons[1])
                     } else {
                         iconEl.innerHTML = weatherIcons[2]
+                        localStorage.setItem('icon', weatherIcons[2])
                     }
                     newListItem.appendChild(listContent);
                     document.body.appendChild(newListItem);
                     
                     newListItem = document.createElement("li");
-                    listContent = document.createTextNode("Temperature: " + mainTemp);
+                    listContent = document.createTextNode("Temperature: " + mainTemp + ' F');
                     newListItem.appendChild(listContent);
                     document.body.appendChild(newListItem);
                     
@@ -81,7 +85,7 @@ function secondFetch () {
                     }
                     
                     newListItem = document.createElement("li");
-                    listContent = document.createTextNode("Temperature: " + mainTemp);
+                    listContent = document.createTextNode("Temperature: " + mainTemp + ' Fahrenheit');
                     newListItem.appendChild(listContent);
                     document.body.appendChild(newListItem);
                     
@@ -97,6 +101,8 @@ function secondFetch () {
 
                     document.body.appendChild(iconEl);
             }}
+            localStorage.setItem('city', document.querySelector("#city-search").value);
+            localStorage.setItem('temp', mainTemp);
         })
 }
 
@@ -123,6 +129,21 @@ searchBox.addEventListener("submit", function(event) {
 
     secondFetch();
 })
+
+if (localStorage.temp) {
+    var pastTemp = document.querySelector('#past-temp');
+    pastTemp.innerHTML = localStorage.temp + ' Fahrenheit'
+}
+
+if (localStorage.city) {
+    var pastCity = document.querySelector('#past-city')
+    pastCity.innerHTML = localStorage.city
+}
+
+if (localStorage.icon) {
+    var pastIcon = document.querySelector('#past-icon')
+    pastIcon.innerHTML = localStorage.icon
+}
 
 // var clearButton = document.querySelector("#clear-button");
 

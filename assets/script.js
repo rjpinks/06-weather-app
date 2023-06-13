@@ -19,27 +19,84 @@ function secondFetch () {
                 console.log("windSpeed", windSpeed);
                 var weatherHumidity = data.list[index].main.humidity;
                 console.log("weatherHumidity", weatherHumidity);
+                var weatherIcons = ['rainy', 'sunny', 'ac_unit', 'cloudy'];
                 
-                var newListItem = document.createElement("h3");
-                var listContent = document.createTextNode("Day " + index);
-                newListItem.appendChild(listContent);
-                document.body.appendChild(newListItem);
-                
-                newListItem = document.createElement("li");
-                listContent = document.createTextNode("Temperature: " + mainTemp);
-                newListItem.appendChild(listContent);
-                document.body.appendChild(newListItem);
-                
-                newListItem = document.createElement("li");
-                listContent = document.createTextNode("Wind Speed: " + windSpeed);
-                newListItem.appendChild(listContent);
-                document.body.appendChild(newListItem);
+                if (index === 0) {
+                    var newListItem = document.createElement("h3");
+                    var listContent = document.createTextNode('Current Weather in ' + document.querySelector("#city-search").value);
+                    var iconEl = document.createElement('span');
+                    var iconElAtt = document.createAttribute('class');
+                    iconElAtt.value = 'material-symbols-outlined'
+                    iconEl.setAttributeNode(iconElAtt);
+                    console.log(data.list[index].weather[0].main)
+                    
+                    if (data.list[index].weather[0].main === 'Rain') {
+                        iconEl.innerHTML = weatherIcons[0]
+                    } else if (data.list[index].weather[0].main === 'Clouds') {
+                        iconEl.innerHTML = weatherIcons[3]
+                    } else if (data.list[index].weather[0].main === 'Clear') {
+                        iconEl.innerHTML = weatherIcons[1]
+                    } else {
+                        iconEl.innerHTML = weatherIcons[2]
+                    }
+                    newListItem.appendChild(listContent);
+                    document.body.appendChild(newListItem);
+                    
+                    newListItem = document.createElement("li");
+                    listContent = document.createTextNode("Temperature: " + mainTemp);
+                    newListItem.appendChild(listContent);
+                    document.body.appendChild(newListItem);
+                    
+                    newListItem = document.createElement("li");
+                    listContent = document.createTextNode("Wind Speed: " + windSpeed);
+                    newListItem.appendChild(listContent);
+                    document.body.appendChild(newListItem);
+                    
+                    var newListItem = document.createElement("li");
+                    var listContent = document.createTextNode("Humidity: " + weatherHumidity + "%");
+                    newListItem.appendChild(listContent);
+                    document.body.appendChild(newListItem);
+                    
+                    document.body.appendChild(iconEl)
+                } else {
+                    var newListItem = document.createElement("h3");
+                    var listContent = document.createTextNode("Day " + index);
+                    newListItem.appendChild(listContent);
+                    document.body.appendChild(newListItem);
+                   
+                    var iconEl = document.createElement('span');
+                    var iconElAtt = document.createAttribute('class');
+                    iconElAtt.value = 'material-symbols-outlined'
+                    iconEl.setAttributeNode(iconElAtt);
+                    console.log(data.list[index].weather[0].main)
+                    
+                    if (data.list[index].weather[0].main === 'Rain') {
+                        iconEl.innerHTML = weatherIcons[0]
+                    } else if (data.list[index].weather[0].main === 'Clouds') {
+                        iconEl.innerHTML = weatherIcons[3]
+                    } else if (data.list[index].weather[0].main === 'Clear') {
+                        iconEl.innerHTML = weatherIcons[1]
+                    } else {
+                        iconEl.innerHTML = weatherIcons[2]
+                    }
+                    
+                    newListItem = document.createElement("li");
+                    listContent = document.createTextNode("Temperature: " + mainTemp);
+                    newListItem.appendChild(listContent);
+                    document.body.appendChild(newListItem);
+                    
+                    newListItem = document.createElement("li");
+                    listContent = document.createTextNode("Wind Speed: " + windSpeed);
+                    newListItem.appendChild(listContent);
+                    document.body.appendChild(newListItem);
 
-                var newListItem = document.createElement("li");
-                var listContent = document.createTextNode("Humidity: " + weatherHumidity + "%");
-                newListItem.appendChild(listContent);
-                document.body.appendChild(newListItem);
-            }
+                    var newListItem = document.createElement("li");
+                    var listContent = document.createTextNode("Humidity: " + weatherHumidity + "%");
+                    newListItem.appendChild(listContent);
+                    document.body.appendChild(newListItem);
+
+                    document.body.appendChild(iconEl);
+            }}
         })
 }
 
@@ -60,7 +117,7 @@ searchBox.addEventListener("submit", function(event) {
                 var cityData = data[index];
                 var dataList = [cityData.lat, cityData.lon];
                 weatherCallUrl = "http://api.openweathermap.org/data/2.5/forecast?lat=" + dataList[0] + "&lon=" + dataList[1] + "&units=imperial" + "&appid=e03ff718bfde42745e7d19afe3ccf6bc";
-                //console.log("in function" ,weatherCallUrl);
+                console.log("in function, weatherCallUrl: " ,weatherCallUrl);
             };
         })
 

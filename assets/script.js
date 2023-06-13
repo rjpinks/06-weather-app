@@ -111,7 +111,7 @@ searchBox.addEventListener("submit", function(event) {
 
     //this is what the user inputs
     var searchedCity = document.querySelector("#city-search").value;
-    var cityApiCall = "http://api.openweathermap.org/geo/1.0/direct?q=" + searchedCity + "&limit=1&appid=e03ff718bfde42745e7d19afe3ccf6bc";
+    var cityApiCall = "https://api.openweathermap.org/geo/1.0/direct?q=" + searchedCity + "&limit=1&appid=e03ff718bfde42745e7d19afe3ccf6bc";
 
     fetch(cityApiCall)
         .then(function (response) {
@@ -122,7 +122,7 @@ searchBox.addEventListener("submit", function(event) {
             for (let index = 0; index < data.length; index++) {
                 var cityData = data[index];
                 var dataList = [cityData.lat, cityData.lon];
-                weatherCallUrl = "http://api.openweathermap.org/data/2.5/forecast?lat=" + dataList[0] + "&lon=" + dataList[1] + "&units=imperial" + "&appid=e03ff718bfde42745e7d19afe3ccf6bc";
+                weatherCallUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + dataList[0] + "&lon=" + dataList[1] + "&units=imperial" + "&appid=e03ff718bfde42745e7d19afe3ccf6bc";
                 console.log("in function, weatherCallUrl: " ,weatherCallUrl);
             }
             secondFetch();

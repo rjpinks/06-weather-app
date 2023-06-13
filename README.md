@@ -8,12 +8,12 @@ I created this app to help test and practice my knowledge on the fetch .then pat
 
 ## Installation
 
-I am having a problem with the app working in Pages. In Live Server on VS code, the fetch and all associated functions work AFTER the 1st unsuccessful submit. I'm not sure why this is happening, and it was not a problem earlier into the code.
+I am having a problem with the app working in Pages. It is saying that the fetch call is unsecured. However, it works on a live server.
 
 ## Usage
 
-Type in a city and you can see the weather for them.
+Type in a city and you can see the weather for them. Also, you can see some information regarding the last search that you made before refreshing the page.
 
 ## Images
-![alt text](./assets/images/06-image1.jpg)
-![alt text](./assets/images/06-image0.jpg)
+![image](./assets/images/weather-app-1.jpg)
+![image](./assets/images/weather-app-2.jpg)
